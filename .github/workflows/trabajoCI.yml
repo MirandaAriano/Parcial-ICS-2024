@@ -4,6 +4,9 @@ on:
   push:
     branches:  
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
@@ -32,24 +35,24 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
+    name: Despliegue en GitHub Pages
+    needs: test
     steps:
-    - name: Checkout del código
-      uses: actions/checkout@v2
+      - name: Obtener código fuente
+        uses: actions/checkout@v2
 
-    - name: Instalar dependencias
-      run: npm install
+      - name: Crear directorio de despliegue
+        run: mkdir -p gh-pages
 
-    - name: Ejecutar pruebas
-      run: npm test
+      - name: Copiar archivos de docs a gh-pages
+        run: cp -r docs/* gh-pages/
 
-    -  name: Construir la aplicación
-       run: npm run build
-
-    - name: Desplegar en GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - name: Desplegar en GitHub Pages
+        if: always() && needs.test.result == 'success' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/DEV')
+        id: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./gh-pages
