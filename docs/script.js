@@ -1,6 +1,6 @@
 function verificacion(input) {
     if (input === "Hola Mundo") {
-        return (true)
+        return (true
     } else {
         return (false)
     }
