@@ -32,7 +32,7 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     
-    analizar_con_sonarcloud:
+    sonarcloud:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
