@@ -64,7 +64,7 @@ jobs:
         run: cp -r docs/* gh-pages/
 
       - name: Cargar Archivos Estaticos como artefacto
-        uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v3
 
       - name: Desplegar en GitHub Pages
         if: always() && needs.test.result == 'success' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/DEV')
