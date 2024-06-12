@@ -63,13 +63,10 @@ jobs:
       - name: Copiar archivos de docs a gh-pages
         run: cp -r docs/* gh-pages/
 
-      - name: Cargar Archivos Estaticos como artefacto
-        uses: actions/upload-pages-artifact@v3
-
       - name: Desplegar en GitHub Pages
         if: always() && needs.test.result == 'success' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/DEV')
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./gh-pages
