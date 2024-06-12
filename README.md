@@ -1,1 +1,1 @@
-https://sonarcloud.io/api/project_badges/measure?project=MirandaAriano_Parcial-ICS-2024&metric=alert_status
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MirandaAriano_Parcial-ICS-2024&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MirandaAriano_Parcial-ICS-2024)
