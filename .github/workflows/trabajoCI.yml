@@ -52,7 +52,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Despliegue en GitHub Pages
-    needs: test
+    needs: sonarcloud
     steps:
       - name: Obtener código fuente
         uses: actions/checkout@v2
