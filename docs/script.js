@@ -11,7 +11,7 @@ function verificarTexto() {
     if (verificacion(input) === true) {
         document.body.style.backgroundColor = "green";
     } else {
-        document.body.style.backgroundColor = "yellow";
+        document.body.style.backgroundColor = "red";
     }
 }
 
