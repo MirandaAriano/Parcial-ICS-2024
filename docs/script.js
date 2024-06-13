@@ -1,6 +1,6 @@
 function verificacion(input) {
     if (input === "Hola Mundo") {
-        return (true)
+        return (true
     } else {
         return (false)
     }
@@ -11,7 +11,7 @@ function verificarTexto() {
     if (verificacion(input) === true) {
         document.body.style.backgroundColor = "green";
     } else {
-        document.body.style.backgroundColor = "blue";
+        document.body.style.backgroundColor = "red";
     }
 }
 
